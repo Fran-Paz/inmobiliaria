@@ -1,4 +1,4 @@
-const propertiesArray = [{
+const propiedadesArray = [{
     name: "Casa de campo",
     description: "Un lugar ideal para descansar de la ciudad",
     src: "https://www.construyehogar.com/wp-content/uploads/2020/02/Dise%C3%B1o-casa-en-ladera.jpg",
@@ -42,14 +42,17 @@ const propertiesArray = [{
   }
 ];
 
-const output = document.querySelector(".output");
-const search = document.querySelector(".filter-output");
+const btnSearch = document.querySelector("nav button");
+const search = document.querySelector(".propiedades");
+const totalSpan = document.querySelector("#Propiedades span");
+
 
 window.addEventListener("DOMContentLoaded", loadList);
+search.addEventListener("input", filter);
 
 function loadList() {
   let temp = `<section id="Propiedades"> <div class="propiedades">`;
-  propertiesArray.forEach((item) => {
+  propiedadesArray.forEach((item) => {
     temp += `<div class="propiedad">
                   <div class="img"
                     style="background-image: url('${item.src}')">
@@ -69,4 +72,10 @@ function loadList() {
   temp += `</section> </div>`;
 
   output.innerHTML = temp
+}
+
+function filter(e) {
+  let temp = '';
+  const result = list.filter(item => item.includes(e.target.value));
+  console.log(result)
 }
