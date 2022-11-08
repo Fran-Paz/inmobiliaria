@@ -1,4 +1,4 @@
-const propiedadesArray = [{
+const propertiesArray = [{
     name: "Casa de campo",
     description: "Un lugar ideal para descansar de la ciudad",
     src: "https://www.construyehogar.com/wp-content/uploads/2020/02/Dise%C3%B1o-casa-en-ladera.jpg",
@@ -42,13 +42,35 @@ const propiedadesArray = [{
   }
 ];
 
-const btnSearch = document.querySelector("nav button");
+//Elementos constantes
+const btnFilter = document.querySelector(".btn");
 const search = document.querySelector(".propiedades");
-const totalSpan = document.querySelector("#Propiedades span");
+const upperTotal = document.querySelector("#totalProperties");
 
 
 window.addEventListener("DOMContentLoaded", loadList);
 search.addEventListener("input", filter);
+
+btnFilter.addEventListener("click", () => {
+
+  let rooms = document.getElementById("roomsQ").value;
+  let minMeters = document.getElementById("minSq").value;
+  let maxMeters = document.getElementById("maxSq").value;
+
+  if (rooms > 0 && minMeters > 0 && maxMeters > 0) {
+    const filterProperties = propertiesArray.filter(
+      (proper) =>
+      propiedades.rooms <=
+    )
+  } else {
+
+  }
+
+});
+
+
+
+
 
 function loadList() {
   let temp = `<section id="Propiedades"> <div class="propiedades">`;

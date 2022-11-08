@@ -17,17 +17,18 @@
     <nav>
         <section>
             <div>
-                <p>Cantidad de cuartos:</p> <input min="0" class="form-control w-50 m-auto" type="number" required>
+                <p>Cantidad de cuartos:</p> <input id="roomsQ" min="0" class="form-control w-50 m-auto" type="number"
+                    required>
             </div>
             <div>
                 <span>Metros cuadrados </span>
                 <div class="d-flex">
                     <div class="me-4">
-                        <p>desde: </p><input min="0" class="form-control " type="number" required>
+                        <p>desde: </p><input id="minSq" min="0" class="form-control " type="number" required>
                     </div>
                     <div>
                         <p> hasta:</p>
-                        <input min="0" class="form-control " type="number" required>
+                        <input id="maxSq" min="0" class="form-control " type="number" required>
                     </div>
                 </div>
             </div>
@@ -36,8 +37,8 @@
     </nav>
     <!-- END SEARCH FIELD-->
 
-    <section id="Propiedades">
-        <h4 class="py-3">Total: <span>0</span></h4>
+    <section>
+        <h4 class="py-3">Total: <span id="totalProperties">0</span></h4>
 
         <div class="propiedades"></div>
     </section>
