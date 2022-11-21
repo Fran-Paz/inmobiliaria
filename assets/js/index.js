@@ -48,69 +48,11 @@ window.addEventListener("DOMContentLoaded", loadList);
 search.addEventListener("input", filter);
 */
 //Elementos constantes sacados desde el html
-const btn = document.querySelector("nav button");
-const propiedadesSection = document.querySelector(".propiedades");
-const totalSpan = document.querySelector("#Propiedades span");
 
 //lo que hará el botón al hacerle click
-btn.addEventListener("click", () => {
-  //obtener los valores de los inputs del html
-  let dormitorios = document.getElementById("cuartos").value;
-  let valorMin = document.getElementById("valorMin").value;
-  let valorMax = document.getElementById("valorMax").value;
 
-  if (dormitorios > "0" && valorMin > "0" && valorMax > "0") {
-    //condiciones para el filtrado
-    const propiedadesFiltradas = propertiesArray.filter(
-      (propiedad) =>
-      propiedad.rooms <= dormitorios &&
-      propiedad.m >= valorMin &&
-      propiedad.m <= valorMax
-    );
-    fillPropiedades(propiedadesFiltradas);
-  } else {
-    alert("Debes ingresar valores en todos los campos para realizar una búsqueda");
-  }
-});
+//condiciones para el filtrado
 
-const fillPropiedades = (propiedades = propertiesArray) => {
-  clearPropiedades();
-  totalSpan.innerHTML = propiedades.length;
-  propiedades.forEach((propiedad) => {
-    const propiedadTemplate = prepareTemplatePropiedad(propiedad);
-    propiedadesSection.innerHTML += propiedadTemplate;
-  });
-};
-
-const prepareTemplatePropiedad = ({
-  name,
-  description,
-  src,
-  rooms,
-  m
-}) => {
-  return `
-    <div class="propiedad">
-        <div class="img" style="background-image: url('${src}')"></div>
-        <section>
-            <h5>${name}</h5>
-            <div class="d-flex justify-content-between">
-                <p>Cuartos: ${rooms}</p>
-                <p>Metros: ${m}</p>
-            </div>
-            <p class="my-3">${description}</p>
-            <button class="btn btn-info ">Ver más</button>
-        </section>
-    </div>
-            `;
-};
-
-const clearPropiedades = () => (propiedadesSection.innerHTML = "");
-
-fillPropiedades();
-
-
-/*
 
 function loadList() {
   let temp = `<section id="Propiedades"> <div class="propiedades">`;
@@ -141,4 +83,3 @@ function filter(e) {
   const result = list.filter(item => item.includes(e.target.value));
   console.log(result)
 }
-*/
