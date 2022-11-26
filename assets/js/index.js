@@ -42,6 +42,76 @@ const propertiesArray = [{
   }
 ];
 
+var filters = {
+  rooms: "",
+  min: "",
+  max: ""
+};
+
+rooms.value = filters.rooms;
+minValue.value = filters.min;
+maxValue.value = filters.max;
+
+rooms.addEventListener("input", function () {
+  filters.rooms = rooms.value;
+  update();
+});
+min.addEventListener("input", function () {
+  filters.min = min.value;
+  update();
+});
+
+max.addEventListener("input", function () {
+  filters.max = max.value;
+  update();
+});
+
+
+
+function filterRooms(properties) {
+  return properties.rooms >= filters.rooms;
+}
+
+function filterMin(properties) {
+  return properties.min >= filters.min;
+}
+
+function filterMax(properties) {
+  return properties.max >= filters.max;
+}
+
+
+function update() {
+  let filteredProperties = propertiesArray().filter(filterRooms).filter(filterMin).filter(filterMax);
+  console.log(filters);
+  output.innerHTML = filteredProperties.map(properties => `<div class="propiedad">
+  <div class="img"
+    style="background-image: url('${item.src}')">
+</div>
+<section>
+    <h5>${item.name}</h5>
+    <div class="d-flex justify-content-between">
+        <p>Cuartos: ${item.rooms} </p>
+        <p>Metros: ${item.m}</p>
+    </div>
+    <p class="my-3">${item.description}</p>
+    <button class="btn btn-info">Ver más</button>
+</section>
+</div>
+`).join("");
+};
+update();
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 window.addEventListener("DOMContentLoaded", loadList);
@@ -52,7 +122,7 @@ search.addEventListener("input", filter);
 //lo que hará el botón al hacerle click
 
 //condiciones para el filtrado
-
+/*
 
 function loadList() {
   let temp = `<section id="Propiedades"> <div class="propiedades">`;
@@ -76,10 +146,4 @@ function loadList() {
   temp += `</section> </div>`;
 
   output.innerHTML = temp
-}
-
-function filter(e) {
-  let temp = '';
-  const result = list.filter(item => item.includes(e.target.value));
-  console.log(result)
-}
+}*/
